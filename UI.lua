@@ -188,7 +188,7 @@ LoadTitle.TextTransparency = 1
 
 LoadFrame:TweenSize(UDim2.new(0, 321,0, 107), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 
-wait(.6)
+wait(1)
 
 TweenService:Create(
 Barload,
@@ -206,7 +206,7 @@ TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 {TextTransparency = 0}
 ):Play()
 
-wait(.6)
+wait(1)
 
 Barload:TweenSize(UDim2.new(0, 50,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
 LoadText.Text = "Checking game..."
@@ -221,17 +221,17 @@ wait(.5)
 Barload:TweenSize(UDim2.new(0, 150,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
 LoadText.Text = "Executing script..."
 
-wait(.5)
+wait(1)
 
 Barload:TweenSize(UDim2.new(0, 200,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
 LoadText.Text = "Getting ready.."
 
-wait(.5)
+wait(1)
 
 Barload:TweenSize(UDim2.new(0, 292,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
 LoadText.Text = "Ready!"
 
-wait(2)
+wait(1)
 
 
 TweenService:Create(
@@ -315,7 +315,7 @@ NotificationHold,
 TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 {BackgroundTransparency = 0.7}
 ):Play()
-wait(0.4)
+wait(1)
 
 NotificationFrame.Name = "NotificationFrame"
 NotificationFrame.Parent = NotificationHold
@@ -399,7 +399,7 @@ end)
 OkayBtn.MouseButton1Click:Connect(function()
 NotificationFrame:TweenSize(UDim2.new(0, 0,0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 
-wait(0.4)
+wait(1)
 
 TweenService:Create(
 NotificationHold,
@@ -407,7 +407,7 @@ TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 {BackgroundTransparency = 1}
 ):Play()
 
-wait(.3)
+wait(1)
 
 NotificationHold:Destroy()
 end)
