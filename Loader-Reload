@@ -245,7 +245,7 @@ spawn(function()
 		 if _G.FastAttackV2 then
 			 local Com = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
 			 Com.activeController.timeToNextAttack = 0
-			 Com.activeController.timeToNextBlock = 999999
+			 Com.activeController.timeToNextBlock = 0
 			 Com.activeController.attacking = true
 		 end
 	 end)
