@@ -138,16 +138,16 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
  MainSection:Toggle("Auto Farm Level", _G.AutoFarmLevel, function(vu)
     _G.AutoFarm = vu
     _G.Water = vu
-    _G.FastAttackV2 = vu
+    _G.FastAttack = vu
     _G.Noclip = vu
 	if _G.AutoFarm and SelectToolWeapon == "" then
 		UILib:Notification("AutoFarm","SelectWeapon Pls","Hee")
 	else
-        wait(.5)
-        HiddenMon = vu
-        Magnet = vu
+                wait(.5)
+                HiddenMon = vu
+                Magnet = vu
 		Auto_Farm = vu
-        Auto_Haki = vu
+                Auto_Haki = vu
 		SelectMonster = ""
 		if vu == false then
 			wait(1)
@@ -165,37 +165,15 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
 	game.Players.LocalPlayer.Character.Humanoid.Health = 0
  end)
 
- MainSection:Toggle("FastAttackV1", false, function(vu)
- 	_G.FastAttack = vu
- end)
- 
- MainSection:Toggle("FastAttackV2", false, function(vu)
-	_G.FastAttackV2 = vu
+ MainSection:Toggle("FastAttack", true, function(vu)
+	_G.FastAttack = vu
  end)
 
- MainSection:Toggle("Autoclick", false, function(vu)
- 	_G.Autoclick = vu
- end)
-
- MainSection:Toggle("Noclip", false, function(vu)
+ MainSection:Toggle("Noclip", true, function(vu)
 	_G.Noclip = vu
  end)
 
- MainSection:Toggle("BringMob", false, function(vu)
-    Magnet = vu
- end)
 
- MainSection:Toggle("GhostMob", false, function(vu)
-    HiddenMon = vu
- end)
- 
- MainSection:Toggle("AutoHaki", false, function(vu)
-	Auto_Haki = vu
- end)
-
- MainSection:Toggle("Water", false, function(vu)
-	_G.Water = vu
- end)
 
  local SelectWeapon = MainSection:Dropdown("SelectWeapon", Wapon, function(vu)
     SelectToolWeapon = vu
@@ -227,22 +205,9 @@ end)
 end)
 
 spawn(function()
-   game:GetService("RunService").Heartbeat:Connect(function()
-    pcall(function()
-        if _G.FastAttack then
-            local Combat = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-            Combat.activeController.timeToNextAttack = 0
-            Combat.activeController.hitboxMagnitude = 1000
-            Combat.activeController.increment = 1
-        end
-    end)
-end) 
-end)
-
-spawn(function()
 	game:GetService("RunService").Heartbeat:Connect(function()
 	 pcall(function()
-		 if _G.FastAttackV2 then
+		 if _G.FastAttack then
 			 local Com = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
 			 Com.activeController.timeToNextAttack = 0
 			 Com.activeController.timeToNextBlock = 0
@@ -253,20 +218,9 @@ end)
 end)
 
 spawn(function()
-   game:GetService("RunService").Heartbeat:Connect(function()
-    pcall(function()
-        if _G.FastAttack then
-        game:GetService'VirtualUser':CaptureController()
-        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 720))
-        end
-    end)
-end) 
-end)
-
-spawn(function()
 	game:GetService("RunService").Heartbeat:Connect(function()
 	 pcall(function()
-		 if _G.FastAttackV2 then
+		 if _G.FastAttack then
 		 game:GetService'VirtualUser':CaptureController()
 		 game:GetService'VirtualUser':Button1Down(Vector2.new(720, 1280))
 		 end
@@ -279,7 +233,7 @@ function TP(P1)
     if Distance < 250 then
         Speed = 1000
     elseif Distance < 500 then
-        Speed = 650
+        Speed = 500
     elseif Distance < 1000 then
         Speed = 450
     elseif Distance >= 1000 then
@@ -811,7 +765,7 @@ spawn(function()
         if Type == 1 then
 		    Farm_Mode = CFrame.new(0, -15, 0)
         elseif Type == 2 then
-            Farm_Mode = CFrame.new(0, 0, 10)
+            Farm_Mode = CFrame.new(0, 0, 15)
         end
 	end
 end)
