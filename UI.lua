@@ -4,8 +4,8 @@ local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
-local PresetColor = Color3.fromRGB(44, 120, 224)
-local CloseBind = Enum.KeyCode.RightControl
+local PresetColor = Color3.fromRGB(255, 255, 255)
+local CloseBind = _G.ONOFF
 
 local knixhub = Instance.new("ScreenGui")
 knixhub.Name = "LobbyHub (Beta)"
