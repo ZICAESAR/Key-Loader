@@ -128,11 +128,11 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
  Three_World = false
  local placeId = game.PlaceId
  if placeId == 2753915549 then
-     Old_World = true
+    Old_World = true
  elseif placeId == 4442272183 then
-    New_World = true
+    	New_World = true
  elseif placeId == 7449423635 then																		
-	 Three_World = true
+	Three_World = true
  end 
 
  MainSection:Toggle("Start Kaitun", _G.AutoFarmLevel, function(vu)
@@ -143,15 +143,12 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
     _G.AutoStat_Kaitun = vu
     _G.Redeem =vu
 	if _G.AutoFarm and SelectToolWeapon == "" then
-		UILib:Notification("AutoFarm","SelectWeapon Pls","Hee")
-	else
-        wait(.5)
+        wait(1)
         HiddenMon = vu
         Magnet = vu
-		Auto_Farm = vu
+	Auto_Farm = vu
         Auto_Haki = vu
         Superhuman = vu
-        AutoFullySuperhuman = vu
         AutoSetSpawn = vu
 		SelectMonster = ""
 		if vu == false then
@@ -174,31 +171,10 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
 	_G.Noclip = vu
  end)
 
-
-
- local SelectWeapon = MainSection:Dropdown("SelectWeapon", Wapon, function(vu)
-    SelectToolWeapon = vu
-    SelectToolWeaponOld = vu
- end)
-
- MainSection:Button("RefreshWeapon", function()
-    SelectWeapon:Clear()
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-        if v:IsA("Tool") then
-            SelectWeapon:Add(v.Name)
-        end
-    end
-    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-        if v:IsA("Tool") then
-            SelectWeapon:Add(v.Name)
-        end
-    end
- end)
-
  local Stats = win:Tab("Stats")
 
- Stats:Toggle("Melee", _G.Melee, function(vu)
-    Mad = vu
+ Stats:Toggle("Stat Kaitun", Stat_Kaitun, function(vu)
+    Stat_Kaitun = vu
  end)
 
  Stats:Toggle("Melee", _G.Melee, function(vu)
@@ -222,7 +198,7 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
  end)
 
  SelectPoint = 1
- Stats:Slider("Point", 1,1000,1, function(Point)
+ Stats:Slider("Point", 1,100,1, function(Point)
     SelectPoint = Point
 end)
 
@@ -263,13 +239,13 @@ end)
 function TP(P1)
     Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if Distance < 250 then
-        Speed = 1000
-    elseif Distance < 500 then
         Speed = 500
+    elseif Distance < 500 then
+        Speed = 335
     elseif Distance < 1000 then
-        Speed = 450
+        Speed = 225
     elseif Distance >= 1000 then
-        Speed = 300
+        Speed = 200
     end
     game:GetService("TweenService"):Create(
         game.Players.LocalPlayer.Character.HumanoidRootPart,
@@ -281,7 +257,7 @@ end
 function TP2(P1)
 	Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
 	if Distance < 1000 then
-		Speed = 500
+		Speed = 450
 	elseif Distance >= 1000 then
 		Speed = 400
 	end
@@ -795,16 +771,16 @@ Type = 1
 spawn(function()
 	while wait(.1) do
         if Type == 1 then
-		    Farm_Mode = CFrame.new(0, 0, 20)
+		Farm_Mode = CFrame.new(0, Y, 25)
         elseif Type == 2 then
-            Farm_Mode = CFrame.new(0, 0, 20)
+            	Farm_Mode = CFrame.new(0, Y, 20)
         end
 	end
 end)
-
+          
 spawn(function()
-	while wait(.1) do
-		Type = 1
+	while wait() do
+	Type = 1
         wait(10)
         Type = 2
         wait(10)
@@ -827,7 +803,7 @@ spawn(function()
 				CheckLevel()
 				TP(CFrameQ)
 				if (CFrameQ.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-					wait(.1)
+					wait(0.5)
 					CheckLevel()
 					if (CFrameQ.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
@@ -860,7 +836,7 @@ spawn(function()
 												game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
 											end
 										else
-											MagnetActive = true
+											MagnetActive = false
 											CheckLevel()
 											TP(CFrameMon)
 										end
@@ -869,7 +845,7 @@ spawn(function()
 							end
 						end
 					else
-						MagnetActive = true
+						MagnetActive = falsef
 						CheckLevel()
 						TP(CFrameMon)
 					end
@@ -897,7 +873,7 @@ spawn(function()
 				if Auto_Farm and MagnetActive and Magnet then
 					if v.Name == Ms and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
 						if v.Name == "Factory Staff [Lv. 800]" then
-							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 400 then
+							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 300 then
 								v.Head.CanCollide = false
 								v.HumanoidRootPart.CanCollide = false
 								v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
@@ -905,7 +881,7 @@ spawn(function()
 								sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 							end
 						elseif v.Name == Ms then
-							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 600 then
+							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 500 then
 								v.Head.CanCollide = false
 								v.HumanoidRootPart.CanCollide = false
 								v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
@@ -1068,7 +1044,7 @@ end)
 spawn(function()
 	pcall(function()
 		while wait(.1) do
-			if Superhuman or AutoFullySuperhuman then
+			if Superhuman then
 				if game.Players.LocalPlayer.Backpack:FindFirstChild("Combat") or game.Players.LocalPlayer.Character:FindFirstChild("Combat") or game.Players.LocalPlayer.Backpack:FindFirstChild("Electric Claw") or game.Players.LocalPlayer.Character:FindFirstChild("Electric Claw") or game.Players.LocalPlayer.Backpack:FindFirstChild("Sharkman Karate") or game.Players.LocalPlayer.Character:FindFirstChild("Sharkman Karate") or game.Players.LocalPlayer.Backpack:FindFirstChild("Death Step") or game.Players.LocalPlayer.Character:FindFirstChild("Death Step") then
 					local args = {
 						[1] = "BuyBlackLeg"
@@ -1113,37 +1089,7 @@ spawn(function()
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 					end
 					if (game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate").Level.Value >= 300) or (game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate").Level.Value >= 300) then
-                        if AutoFullySuperhuman then
-                            end
-                            local args = {
-                                [1] = "BlackbeardReward",
-                                [2] = "DragonClaw",
-                                [3] = "1"
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                            local args = {
-                                [1] = "BlackbeardReward",
-                                [2] = "DragonClaw",
-                                [3] = "2"
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end
-                    end
-				elseif not AutoFullySuperhuman then
-					local args = {
-						[1] = "BlackbeardReward",
-						[2] = "DragonClaw",
-						[3] = "1"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-					local args = {
-						[1] = "BlackbeardReward",
-						[2] = "DragonClaw",
-						[3] = "2"
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-			end
+                        
 			if (game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw").Level.Value >= 300) or (game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw").Level.Value >= 300) then
 				local args = {
 					[1] = "BuySuperhuman"
