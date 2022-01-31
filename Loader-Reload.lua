@@ -878,7 +878,7 @@ spawn(function()
 							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 300 then
 								v.Head.CanCollide = false
 								v.HumanoidRootPart.CanCollide = false
-								v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+								v.HumanoidRootPart.Size = Vector3.new(120, 120, 120)
 								v.HumanoidRootPart.CFrame = PosMon
 								sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 							end
@@ -886,7 +886,7 @@ spawn(function()
 							if (v.HumanoidRootPart.Position - PosMon.Position).Magnitude <= 500 then
 								v.Head.CanCollide = false
 								v.HumanoidRootPart.CanCollide = false
-								v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+								v.HumanoidRootPart.Size = Vector3.new(120, 120, 120)
 								v.HumanoidRootPart.CFrame = PosMon
 								sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 							end
