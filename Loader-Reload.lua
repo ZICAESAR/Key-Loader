@@ -135,7 +135,8 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
 	Three_World = true
  end 
 
- MainSection:Toggle("Start Kaitun", _G.AutoFarmLevel, function(vu)
+ MainSection:Toggle("Start Kaitun", _G.Auto_Kaitun, function(vu)
+	wait(5)
     _G.AutoFarm = vu
     _G.Water = vu
     _G.FastAttack = vu
@@ -163,18 +164,19 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
 	game.Players.LocalPlayer.Character.Humanoid.Health = 0
  end)
 
- MainSection:Toggle("FastAttack", true, function(vu)
+ MainSection:Toggle("FastAttack", _G.FastAttack, function(vu)
 	_G.FastAttack = vu
  end)
 
- MainSection:Toggle("Noclip", true, function(vu)
-	_G.Noclip = vu
+ MainSection:Slider("Slider",1,100,1, function(vu)
+    Y = vu
  end)
 
  local Stats = win:Tab("Stats")
 
- Stats:Toggle("Stat Kaitun", Stat_Kaitun, function(vu)
-    Stat_Kaitun = vu
+ Stats:Toggle("Stat Kaitun", _G.Stat_Kaitun, function(vu)
+	wait(1)
+    	Stat_Kaitun = vu
  end)
 
  Stats:Toggle("Melee", _G.Melee, function(vu)
@@ -762,7 +764,7 @@ end
 function EquipWeapon(ToolSe)
     if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
         local tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-        wait(.2)
+        wait(.1)
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(tool)
     end
 end
