@@ -136,7 +136,7 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
  end 
 
  MainSection:Toggle("Start Kaitun", _G.Auto_Kaitun, function(vu)
-	wait(5)
+	wait(1)
     _G.AutoFarm = vu
     _G.Water = vu
     _G.FastAttack = vu
@@ -168,7 +168,7 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
 	_G.FastAttack = vu
  end)
 
- MainSection:Slider("Slider",1,100,1, function(vu)
+ MainSection:Slider("Y",1,80,30, function(vu)
     Y = vu
  end)
 
@@ -227,25 +227,14 @@ spawn(function()
 end) 
 end)
 
-spawn(function()
-	game:GetService("RunService").Heartbeat:Connect(function()
-	 pcall(function()
-		 if _G.FastAttack then
-		 game:GetService'VirtualUser':CaptureController()
-		 game:GetService'VirtualUser':Button1Down(Vector2.new(720, 1280))
-		 end
-	 end)
-end)
-end)
-
 function TP(P1)
     Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     if Distance < 250 then
-        Speed = 500
+        Speed = 750
     elseif Distance < 500 then
-        Speed = 335
+        Speed = 250
     elseif Distance < 1000 then
-        Speed = 225
+        Speed = 250
     elseif Distance >= 1000 then
         Speed = 200
     end
@@ -259,9 +248,9 @@ end
 function TP2(P1)
 	Distance = (P1.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
 	if Distance < 1000 then
-		Speed = 450
+		Speed = 250
 	elseif Distance >= 1000 then
-		Speed = 400
+		Speed = 300
 	end
     game:GetService("TweenService"):Create(
         game.Players.LocalPlayer.Character.HumanoidRootPart,
@@ -805,7 +794,7 @@ spawn(function()
 				CheckLevel()
 				TP(CFrameQ)
 				if (CFrameQ.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-					wait(0.5)
+					wait(1)
 					CheckLevel()
 					if (CFrameQ.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", NameQuest, QuestLv)
@@ -847,7 +836,7 @@ spawn(function()
 							end
 						end
 					else
-						MagnetActive = falsef
+						MagnetActive = true
 						CheckLevel()
 						TP(CFrameMon)
 					end
@@ -1046,7 +1035,7 @@ end)
 spawn(function()
 	pcall(function()
 		while wait(.1) do
-			if Superhuman then
+			if Superhuman or AutoFullySuperhuman then
 				if game.Players.LocalPlayer.Backpack:FindFirstChild("Combat") or game.Players.LocalPlayer.Character:FindFirstChild("Combat") or game.Players.LocalPlayer.Backpack:FindFirstChild("Electric Claw") or game.Players.LocalPlayer.Character:FindFirstChild("Electric Claw") or game.Players.LocalPlayer.Backpack:FindFirstChild("Sharkman Karate") or game.Players.LocalPlayer.Character:FindFirstChild("Sharkman Karate") or game.Players.LocalPlayer.Backpack:FindFirstChild("Death Step") or game.Players.LocalPlayer.Character:FindFirstChild("Death Step") then
 					local args = {
 						[1] = "BuyBlackLeg"
@@ -1091,12 +1080,51 @@ spawn(function()
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 					end
 					if (game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate").Level.Value >= 300) or (game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate").Level.Value >= 300) then
-                        
-			if (game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw").Level.Value >= 300) or (game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw").Level.Value >= 300) then
-				local args = {
-					[1] = "BuySuperhuman"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        if AutoFullySuperhuman then
+                            if game.Players.LocalPlayer.Data.Level.Value >= 1100 then
+                                if game.Players.LocalPlayer.Data.Fragments.Value <= 1499 then
+                                    RaidSuperhuman = true
+                                    _G.SelectRaid = "Flame"
+                                    Auto_Farm = false
+                                elseif game.Players.LocalPlayer.Data.Fragments.Value >= 1500 then
+                                    RaidSuperhuman = false
+                                    if _G.AutoFarm and RaidSuperhuman == false then
+                                        Auto_Farm = true
+                                    end
+                                    local args = {
+                                        [1] = "BlackbeardReward",
+                                        [2] = "DragonClaw",
+                                        [3] = "1"
+                                    }
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                                    local args = {
+                                        [1] = "BlackbeardReward",
+                                        [2] = "DragonClaw",
+                                        [3] = "2"
+                                    }
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                                end
+                            end
+						elseif not AutoFullySuperhuman then
+							local args = {
+								[1] = "BlackbeardReward",
+								[2] = "DragonClaw",
+								[3] = "1"
+							}
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+							local args = {
+								[1] = "BlackbeardReward",
+								[2] = "DragonClaw",
+								[3] = "2"
+							}
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+						end
+					end
+					if (game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw").Level.Value >= 300) or (game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw").Level.Value >= 300) then
+						local args = {
+							[1] = "BuySuperhuman"
+						}
+						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 					end
 				end
 			end
