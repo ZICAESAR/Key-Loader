@@ -1175,7 +1175,7 @@ end)
 spawn(function()
 	while wait(.1) do
 		if _G.AutoStat_Kaitun then
-			for i,v in pairs(G.AutoStat_Kaitun) do
+			for i,v in pairs(_G.AutoStat_Kaitun) do
 				if v == "Melee" and game.Players.LocalPlayer.Data.Stats.Melee.Level.Value ~= 2100 then
 					repeat game:GetService("RunService").Heartbeat:wait()
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint", "Melee", 1)
