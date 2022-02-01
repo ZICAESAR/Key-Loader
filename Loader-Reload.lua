@@ -136,10 +136,8 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
  end 
 
  MainSection:Toggle("Start Kaitun", _G.Auto_Kaitun, function(vu)
-	wait(1)
     _G.AutoFarm = vu
     _G.Water = vu
-    _G.FastAttack = vu
     _G.Noclip = vu
     _G.AutoStat_Kaitun = vu
     _G.Redeem =vu
@@ -160,7 +158,6 @@ if game:GetService("CoreGui"):FindFirstChild("LobbyHub") then
  end)
 
  MainSection:Button("Reset", function()
- 	game.Players.LocalPlayer.Character.Humanoid:SetStateEnabled(15,true)
 	game.Players.LocalPlayer.Character.Humanoid.Health = 0
  end)
 
