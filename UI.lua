@@ -188,7 +188,7 @@ LoadTitle.TextTransparency = 1
 
 LoadFrame:TweenSize(UDim2.new(0, 321,0, 107), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 
-wait(1)
+wait(.4)
 
 TweenService:Create(
 Barload,
@@ -206,32 +206,32 @@ TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 {TextTransparency = 0}
 ):Play()
 
-wait(1)
+wait(.2)
 
 Barload:TweenSize(UDim2.new(0, 50,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-LoadText.Text = "Checking game..."
+LoadText.Text = "Load Script.."
 
-wait(1)
+wait(.5)
 
 Barload:TweenSize(UDim2.new(0, 100,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-LoadText.Text = "Getting data..."
+LoadText.Text = "Load Script.."
 
 wait(.5)
 
 Barload:TweenSize(UDim2.new(0, 150,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-LoadText.Text = "Executing script..."
+LoadText.Text = "Load Script.."
 
-wait(1)
+wait(.5)
 
 Barload:TweenSize(UDim2.new(0, 200,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-LoadText.Text = "Getting ready.."
+LoadText.Text = "Load Script.."
 
-wait(1)
+wait(.5)
 
 Barload:TweenSize(UDim2.new(0, 292,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
-LoadText.Text = "Ready!"
+LoadText.Text = "Ready"
 
-wait(1)
+wait(.5)
 
 
 TweenService:Create(
