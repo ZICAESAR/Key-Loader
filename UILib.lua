@@ -4,11 +4,11 @@ local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
-local PresetColor = Color3.fromRGB(255, 255, 255)
-local CloseBind = _G.ONOFF
+local PresetColor = Color3.fromRGB(44, 120, 224)
+local CloseBind = Enum.KeyCode.RightControl
 
 local knixhub = Instance.new("ScreenGui")
-knixhub.Name = "LobbyHub (Beta)"
+knixhub.Name = "LobbyHub"
 knixhub.Parent = game.CoreGui
 knixhub.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
@@ -87,7 +87,7 @@ end
 
 function lib:Window(text, preset, closebind)
 CloseBind = closebind or Enum.KeyCode.RightControl
-PresetColor = preset or Color3.fromRGB(255, 255, 255)
+PresetColor = preset or Color3.fromRGB(44, 120, 224)
 fs = false
 local Main = Instance.new("Frame")
 local TabHold = Instance.new("Frame")
@@ -180,12 +180,81 @@ LoadTitle.BackgroundTransparency = 1.000
 LoadTitle.Position = UDim2.new(0.0432743616, 0, 0.1125011, 0)
 LoadTitle.Size = UDim2.new(0, 200, 0, 23)
 LoadTitle.Font = Enum.Font.GothamSemibold
-LoadTitle.Text = "LobbyHub (Beta)"
+LoadTitle.Text = "LobbyHub"
 LoadTitle.TextColor3 = Color3.fromRGB(68, 68, 68)
 LoadTitle.TextSize = 12.000
 LoadTitle.TextXAlignment = Enum.TextXAlignment.Left
 LoadTitle.TextTransparency = 1
 
+LoadFrame:TweenSize(UDim2.new(0, 321,0, 107), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+
+wait(.6)
+
+TweenService:Create(
+Barload,
+TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+{BackgroundTransparency = 0}
+):Play()
+TweenService:Create(
+LoadText,
+TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+{TextTransparency = 0}
+):Play()
+TweenService:Create(
+LoadTitle,
+TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+{TextTransparency = 0}
+):Play()
+
+wait(.6)
+
+Barload:TweenSize(UDim2.new(0, 50,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+LoadText.Text = "Getting data"
+
+wait(1)
+
+Barload:TweenSize(UDim2.new(0, 100,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+LoadText.Text = "Getting data."
+
+wait(.5)
+
+Barload:TweenSize(UDim2.new(0, 150,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+LoadText.Text = "Getting data.."
+
+wait(.5)
+
+Barload:TweenSize(UDim2.new(0, 200,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+LoadText.Text = "Getting data..."
+
+wait(.5)
+
+Barload:TweenSize(UDim2.new(0, 292,0, 2), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .3, true)
+LoadText.Text = "Ready"
+
+wait(1)
+
+
+TweenService:Create(
+Barload,
+TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+{BackgroundTransparency = 1}
+):Play()
+TweenService:Create(
+LoadText,
+TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+{TextTransparency = 1}
+):Play()
+TweenService:Create(
+LoadTitle,
+TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+{TextTransparency = 1}
+):Play()
+
+wait(.6)
+
+LoadFrame:TweenSize(UDim2.new(0, 0,0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
+
+wait(.5)
 Main.Visible = true
 
 Main:TweenSize(UDim2.new(0, 560, 0, 319), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
@@ -246,7 +315,7 @@ NotificationHold,
 TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 {BackgroundTransparency = 0.7}
 ):Play()
-wait(1)
+wait(0.4)
 
 NotificationFrame.Name = "NotificationFrame"
 NotificationFrame.Parent = NotificationHold
@@ -330,7 +399,7 @@ end)
 OkayBtn.MouseButton1Click:Connect(function()
 NotificationFrame:TweenSize(UDim2.new(0, 0,0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, .6, true)
 
-wait(1)
+wait(0.4)
 
 TweenService:Create(
 NotificationHold,
@@ -338,7 +407,7 @@ TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 {BackgroundTransparency = 1}
 ):Play()
 
-wait(1)
+wait(.3)
 
 NotificationHold:Destroy()
 end)
@@ -1576,4 +1645,3 @@ end
 return tabhold
 end
 return lib
-
